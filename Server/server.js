@@ -2,8 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const userRoutes = require('./routes/user');
-app.use('/api/users', userRoutes);
+const userRoutes = require('./routers/user');
+const pizzaRoutes = require('./routers/pizza');
+const orderRoutes = require('./routers/order');
+
 
 dotenv.config();
 
@@ -12,6 +14,10 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+app.use('/api/users', userRoutes);
+app.use('/api/pizzas', pizzaRoutes);
+app.use('/api/orders', orderRoutes);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
