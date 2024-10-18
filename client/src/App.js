@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import PizzaList from './components/PizzaList';
+import OrderForm from './components/OrderForm';
+import Register from './components/Register';
 
 function App() {
   const [data, setData] = useState('');
@@ -17,6 +20,10 @@ function App() {
   return (
     <div>
       <h1>{data}</h1>
+      <h1>Online Pizza Shop</h1>
+      <Register />
+      <PizzaList />
+      <OrderForm pizzaId="6710c6e7cafc0b2aab322aa3" />
     </div>
   );
 }
