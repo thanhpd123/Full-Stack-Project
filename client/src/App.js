@@ -1,30 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import PizzaList from './components/PizzaList';
-import OrderForm from './components/OrderForm';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Login from './components/Login';
 import Register from './components/Register';
+import Dashboard from './components/Dashboard';
 
 function App() {
-  const [data, setData] = useState('');
-
-  useEffect(() => {
-    axios.get('http://localhost:5000/')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
-
   return (
-    <div>
-      <h1>{data}</h1>
-      <h1>Online Pizza Shop</h1>
-      <Register />
-      <PizzaList />
-      <OrderForm pizzaId="6710c6e7cafc0b2aab322aa3" />
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/register">Register</Link></li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

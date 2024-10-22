@@ -14,6 +14,10 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
