@@ -40,6 +40,7 @@ const Login = () => {
                 <br />
                 <input
                     type="password"
+                    about='throw new Error("error back password ");'
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}

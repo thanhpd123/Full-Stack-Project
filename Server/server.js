@@ -6,7 +6,6 @@ const userRoutes = require('./routers/user');
 const pizzaRoutes = require('./routers/pizza');
 const orderRoutes = require('./routers/order');
 
-
 dotenv.config();
 
 const app = express();
